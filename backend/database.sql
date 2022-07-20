@@ -23,41 +23,82 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `item`
+-- Structure de la table `user`
 --
 
-CREATE TABLE `item` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `user` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(20) NOT NULL,
+  `firstname` VARCHAR(25) NOT NULL,
+  `lastname` VARCHAR(25) NOT NULL,
+  `hashedPassword` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- Contenu de la table `item`
+-- Structure de la table `plateform`
 --
 
-INSERT INTO `item` (`id`, `title`) VALUES
-(1, 'Stuff'),
-(2, 'Doodads');
+CREATE TABLE `plateform` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nom` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- Index pour les tables exportées
+-- Structure de la table `photo`
 --
 
---
--- Index pour la table `item`
---
-ALTER TABLE `item`
-  ADD PRIMARY KEY (`id`);
+CREATE TABLE `photo` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `description` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- Structure de la table `games`
 --
 
+CREATE TABLE `games` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `plateformId` INT UNSIGNED NOT NULL,
+  `photoId` INT UNSIGNED NOT NULL,
+  `userId` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`, `plateformId`, `photoId`, `userId`),
+  KEY `fk_games_plateform1_idx` (`plateformId`),
+  KEY `fk_games_photo1_idx` (`photoId`),
+  KEY `fk_games_user1_idx` (`userId`),
+  CONSTRAINT `fk_games_plateform1_idx` FOREIGN KEY (`plateformId`) REFERENCES `plateform` (`id`),
+  CONSTRAINT `fk_games_photo1_idx` FOREIGN KEY (`photoId`) REFERENCES `photo` (`id`),
+  CONSTRAINT `fk_games_user1_idx` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
 --
--- AUTO_INCREMENT pour la table `item`
+-- `insertion des plateformes`
 --
-ALTER TABLE `item`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+INSERT INTO plateform (nom)
+ VALUES 
+ ('PC'),
+ ('Playstation 5'),
+ ('Playstation 4'),
+ ('Playstation 3'),
+ ('Playstation 2'),
+ ('Playstation'),
+ ('Xbox'),
+ ('Xbox 360'),
+ ('Xbox one/s/x'),
+ ('Xbox Series S/X'),
+ ('Nintendo Wii'),
+ ('Nintendo Wii U'),
+ ('Nintendo Switch'),
+ ('Nintendi Gamecube'),
+ ('Mobile');
+  
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
