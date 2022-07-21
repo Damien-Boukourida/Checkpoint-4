@@ -1,6 +1,9 @@
 import "./Login.scss";
 import Header from "@components/Header";
 import { useReducer } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { userContext } from "../contexts/UserContext";
 import * as yup from "yup";
 import registerUserReducer, {
   initialState,
@@ -41,9 +44,9 @@ const schemaForCreation = yup.object().shape({
 });
 
 const Login = () => {
-  const [state, dispatch] = useReducer(registerUserReducer, initialState);
+  const [state, dispatchRegister] = useReducer(registerUserReducer, initialState);
 
-  const handleSubmit = async (e) => {
+  const handleSubmitRegister = async (e) => {
     e.preventDefault();
 
     try {
@@ -56,13 +59,45 @@ const Login = () => {
         firstname: state.firstname,
         lastname: state.lastname,
       });
-      dispatch({ type: "RESET_FORM" });
+      dispatchRegister({ type: "RESET_FORM" });
       return alert("User registered successfully");
     } catch (err) {
       if (err?.response?.status === 400) {
         return alert("Email already used");
       }
       return alert(JSON.stringify(err.message));
+    }
+  };
+
+  const { dispatch } = userContext();
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    setUserData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
+  const handleSubmitLogin = async (e) => {
+    e.preventDefault();
+    if (!userData.email || !userData.password) {
+      return alert("You must provide an email and a password");
+    }
+    try {
+      const { data } = await axios.post("users/login", userData, {
+        withCredentials: true,
+      });
+      // console.log(data);
+      setUserData({ email: "", password: "" });
+      dispatch({ type: "LOGIN", payload: data });
+      return null;
+    } catch (err) {
+      return alert(err.message);
     }
   };
 
@@ -80,11 +115,23 @@ const Login = () => {
               </div>
             </div>
             <div className="champs">
-              <input type="text" placeholder="Email :" />
-              <input type="text" placeholder="Password :" />
+              <input
+                id="email"
+                type="email"
+                value={userData.email}
+                onChange={handleInputChange}
+                placeholder="Email :"
+              />
+              <input
+                id="password"
+                type="password"
+                value={userData.password}
+                onChange={handleInputChange}
+                placeholder="Password :"
+              />
             </div>
             <div className="loginButton">
-              <button className="boutonlogin">Login</button>
+              <button className="boutonlogin" onClick={handleSubmitLogin}>Login</button>
             </div>
           </div>
         </div>
@@ -96,14 +143,14 @@ const Login = () => {
                 <p className="second">Create one !</p>
               </div>
             </div>
-            <form className="Inputs" onSubmit={handleSubmit}>
+            <form className="Inputs" onSubmit={handleSubmitRegister}>
               <input
                 id="lastname"
                 type="lastname"
                 placeholder="Lastname :"
                 value={state.lastname}
                 onChange={(e) =>
-                  dispatch({ type: "UPDATE_LASTNAME", payload: e.target.value })
+                  dispatchRegister({ type: "UPDATE_LASTNAME", payload: e.target.value })
                 }
                 required
               />
@@ -113,7 +160,7 @@ const Login = () => {
                 placeholder="Firstname :"
                 value={state.firstname}
                 onChange={(e) =>
-                  dispatch({
+                  dispatchRegister({
                     type: "UPDATE_FIRSTNAME",
                     payload: e.target.value,
                   })
@@ -126,7 +173,7 @@ const Login = () => {
                 placeholder="Nickname :"
                 value={state.username}
                 onChange={(e) =>
-                  dispatch({
+                  dispatchRegister({
                     type: "UPDATE_USERNAME",
                     payload: e.target.value,
                   })
@@ -139,7 +186,7 @@ const Login = () => {
                 placeholder="Email :"
                 value={state.email}
                 onChange={(e) =>
-                  dispatch({ type: "UPDATE_EMAIL", payload: e.target.value })
+                  dispatchRegister({ type: "UPDATE_EMAIL", payload: e.target.value })
                 }
                 required
               />
@@ -149,7 +196,7 @@ const Login = () => {
                 placeholder="Password :"
                 value={state.password}
                 onChange={(e) =>
-                  dispatch({ type: "UPDATE_PASSWORD", payload: e.target.value })
+                  dispatchRegister({ type: "UPDATE_PASSWORD", payload: e.target.value })
                 }
                 required
               />
@@ -159,7 +206,7 @@ const Login = () => {
                 placeholder="Comfirm password :"
                 value={state.confirmPassword}
                 onChange={(e) =>
-                  dispatch({
+                  dispatchRegister({
                     type: "UPDATE_CONFIRM_PASSWORD",
                     payload: e.target.value,
                   })
