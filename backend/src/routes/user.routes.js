@@ -7,7 +7,6 @@ const router = express.Router();
 router.get(
   "/",
   UserController.authorization,
-  UserController.isAdmin,
   UserController.browse
 );
 router.get("/logout", UserController.authorization, UserController.clearCookie);

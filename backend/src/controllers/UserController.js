@@ -82,6 +82,13 @@ class UserController {
 
       // Hash password
       const hashedPassword = await models.user.hashPassword(password);
+      console.log({
+        username,
+        firstname,
+        lastname,
+        email,
+        hashedPassword,
+      });
 
       const [result] = await models.user.insert({
         username,
