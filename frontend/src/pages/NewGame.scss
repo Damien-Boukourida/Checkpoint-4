@@ -1,0 +1,113 @@
+.NewGame {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header-homepage {
+  width: 100%;
+  height: 12%;
+}
+
+.question {
+  font-size: 20px;
+  font-weight: 900;
+  margin-top: 4rem;
+}
+
+.contenuNewGame {
+  width: 100%;
+  height: 76%;
+}
+
+.formulaire {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.jeux {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  input {
+    width: 50%;
+    border: solid 2px #7000ff;
+    border-radius: 50px;
+    padding: 6px 20px;
+  }
+
+  select {
+    border: solid 2px #7000ff;
+    border-radius: 50px;
+    width: 50%;
+    padding: 6px;
+    margin-top: 5rem;
+  }
+}
+
+.creategame {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.image {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.imageButtons {
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-top: 2rem;
+  }
+}
+
+.uploadedImage {
+  width: 12rem;
+  height: 12rem;
+  background-color: grey;
+}
+
+.chooseimage {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.addImage,
+.save {
+  padding: 6px 25px;
+  border: solid 2px #7000ff;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #7000ff;
+  background-color: white;
+  transition: 0.5s;
+}
+
+.addImage,
+.save:hover {
+  transform: scale(1.15);
+  background-color: #7000ff;
+  color: white;
+  cursor: pointer;
+}

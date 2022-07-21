@@ -1,0 +1,31 @@
+.Mygames {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header-homepage {
+  width: 100%;
+  height: 12%;
+}
+
+.game_links {
+  width: 90%;
+}
+
+.game_link ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 5rem;
+  margin-top: 3rem;
+}
+
+li input {
+  border: solid 2px #7000ff;
+  padding: 8.5px 25px;
+  border-radius: 50px;
+  color: #7000ff;
+}

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="header">
-      <header>
+    <div className="parent-header">
+      <div className="header">
         <div className="top">
           <div className="nickname">
             <Link className="name" to="/">
@@ -27,7 +27,7 @@ const Header = () => {
           </div>
         </div>
         <div className="separation"></div>
-      </header>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,149 @@
+.LoginContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header-homepage {
+  width: 100%;
+  height: 12%;
+}
+
+.forms {
+  height: 88%;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.loginform {
+  height: 100%;
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerform {
+  height: 100%;
+  width: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logs {
+  width: 90%;
+  height: 90%;
+  border: solid 1px #7000ff;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.champs {
+  width: 90%;
+  height: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loginButton {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boutonlogin {
+  padding: 6px 25px;
+  border: solid 2px #7000ff;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 15px;
+  background-color: white;
+  color: #7000ff;
+  transition: 0.5s;
+}
+
+.boutonlogin:hover {
+  transform: scale(1.15);
+  background-color: #7000ff;
+  color: white;
+}
+
+.regist {
+  width: 90%;
+  height: 90%;
+  border-radius: 30px;
+  border: solid 1px #7000ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.textes {
+  width: 90%;
+}
+
+.first {
+  font-size: 20px;
+}
+
+.second {
+  font-size: 18px;
+  color: #7000ff;
+}
+
+.phrases {
+  width: 50%;
+  text-align: start;
+}
+
+.registButton {
+  height: 10%;
+  width: 100%;
+}
+
+.Inputs {
+  width: 90%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+input {
+  border: solid 1px #7000ff;
+  border-radius: 50px;
+  background-color: white;
+  padding: 6px 20px;
+  height: 1.5rem;
+  width: 20rem;
+}
+
+.boutoncreacompte {
+  padding: 6px 25px;
+  border: solid 2px #7000ff;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 15px;
+  background-color: white;
+  color: #7000ff;
+  transition: 0.5s;
+}
+
+.boutoncreacompte:hover {
+  transform: scale(1.15);
+  background-color: #7000ff;
+  color: white;
+}
