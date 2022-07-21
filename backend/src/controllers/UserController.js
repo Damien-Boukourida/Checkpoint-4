@@ -128,15 +128,18 @@ class UserController {
 
     try {
       const [[user]] = await models.user.findByEmail(email);
-
+       console.log("entrée login")
       if (!user) {
+        console.log("user")
         return res.status(403).send("Invalid email or password");
       }
       if (await models.user.verifyPassword(password, user.hashedPassword)) {
+        console.log("fiouh")
         // Create token
         const token = jwt.sign({ id: user.id }, process.env.ACCESS_JWT_SECRET, {
           expiresIn: process.env.ACCESS_JWT_EXPIRESIN,
         });
+        console.log(res)
         return res
           .cookie("accessToken", token, {
             httpOnly: true,
@@ -151,7 +154,7 @@ class UserController {
             firstname: user.firstname,
           });
       }
-
+      console.log("fin login")
       return res.status(403).send("Invalid email or password");
     } catch (err) {
       return res.status(500).send(err.message);
