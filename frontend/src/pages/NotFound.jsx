@@ -3,8 +3,8 @@ import Header from "@components/Header";
 
 const NotFound = () => {
   return (
-    <div className="NotFound">
-      <div className="header">
+    <div className="Notfound">
+      <div className="parent-header">
         <Header />
       </div>
     </div>

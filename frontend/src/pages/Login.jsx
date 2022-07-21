@@ -3,8 +3,8 @@ import Header from "@components/Header";
 
 const Login = () => {
   return (
-    <div className="Login">
-      <div className="header">
+    <div className="LoginContainer">
+      <div className="header-homepage">
         <Header />
       </div>
     </div>
