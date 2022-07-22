@@ -1,7 +1,6 @@
 import "./Login.scss";
 import Header from "@components/Header";
-import { useReducer } from "react";
-import { useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../contexts/UserContext";
 import * as yup from "yup";
@@ -44,7 +43,16 @@ const schemaForCreation = yup.object().shape({
 });
 
 const Login = () => {
-  const [state, dispatchRegister] = useReducer(registerUserReducer, initialState);
+  const [state, dispatchRegister] = useReducer(
+    registerUserReducer,
+    initialState
+  );
+
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    axios.get("user").then((result) => setUser(result.data));
+  }, []);
 
   const handleSubmitRegister = async (e) => {
     e.preventDefault();
@@ -60,7 +68,7 @@ const Login = () => {
         lastname: state.lastname,
       });
       dispatchRegister({ type: "RESET_FORM" });
-      return alert("User registered successfully");
+      return alert("Your account has been created");
     } catch (err) {
       if (err?.response?.status === 400) {
         return alert("Email already used");
@@ -95,7 +103,7 @@ const Login = () => {
       // console.log(data);
       setUserData({ email: "", password: "" });
       dispatch({ type: "LOGIN", payload: data });
-      return null;
+      return alert("Welcome back");
     } catch (err) {
       return alert(err.message);
     }
@@ -131,7 +139,9 @@ const Login = () => {
               />
             </div>
             <div className="loginButton">
-              <button className="boutonlogin" onClick={handleSubmitLogin}>Login</button>
+              <button className="boutonlogin" onClick={handleSubmitLogin}>
+                Login
+              </button>
             </div>
           </div>
         </div>
@@ -150,7 +160,10 @@ const Login = () => {
                 placeholder="Lastname :"
                 value={state.lastname}
                 onChange={(e) =>
-                  dispatchRegister({ type: "UPDATE_LASTNAME", payload: e.target.value })
+                  dispatchRegister({
+                    type: "UPDATE_LASTNAME",
+                    payload: e.target.value,
+                  })
                 }
                 required
               />
@@ -186,7 +199,10 @@ const Login = () => {
                 placeholder="Email :"
                 value={state.email}
                 onChange={(e) =>
-                  dispatchRegister({ type: "UPDATE_EMAIL", payload: e.target.value })
+                  dispatchRegister({
+                    type: "UPDATE_EMAIL",
+                    payload: e.target.value,
+                  })
                 }
                 required
               />
@@ -196,7 +212,10 @@ const Login = () => {
                 placeholder="Password :"
                 value={state.password}
                 onChange={(e) =>
-                  dispatchRegister({ type: "UPDATE_PASSWORD", payload: e.target.value })
+                  dispatchRegister({
+                    type: "UPDATE_PASSWORD",
+                    payload: e.target.value,
+                  })
                 }
                 required
               />
@@ -213,11 +232,15 @@ const Login = () => {
                 }
                 required
               />
-
-              <button className="boutoncreacompte" type="submit">
+            </form>
+            <div className="buttonRegister">
+              <button
+                className="boutoncreacompte"
+                onClick={handleSubmitRegister}
+              >
                 Register
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </div>

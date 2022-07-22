@@ -1,5 +1,7 @@
 import Header from "@components/Header";
 import "./Homepage.scss";
+import logoGithub from "@assets/images/github.png";
+import logolinkedin from "@assets/images/linkedin.png";
 
 const Homepage = () => {
   return (
@@ -21,6 +23,26 @@ const Homepage = () => {
             <div className="small-square"></div>
           </div>
         </div>
+      </div>
+      <div className="reseaux">
+        <a
+          className="logoLinkedin"
+          href="https://www.linkedin.com/in/damien-boukourida/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img className="logoLink" src={logolinkedin} alt="Linkedin logo" />
+          <p>LinkedIn</p>
+        </a>
+        <a
+          className="logoGithub"
+          href="https://github.com/Damien-Boukourida"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img className="logoGit" src={logoGithub} alt="Github logo" />
+          <p>GitHub</p>
+        </a>
       </div>
     </div>
   );

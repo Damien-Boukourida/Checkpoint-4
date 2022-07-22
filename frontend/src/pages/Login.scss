@@ -131,7 +131,7 @@ input {
   width: 20rem;
 }
 
-.boutoncreacompte {
+button {
   padding: 6px 25px;
   border: solid 2px #7000ff;
   border-radius: 50px;
@@ -142,8 +142,9 @@ input {
   transition: 0.5s;
 }
 
-.boutoncreacompte:hover {
+button:hover {
   transform: scale(1.15);
   background-color: #7000ff;
   color: white;
+  cursor: pointer;
 }

@@ -36,7 +36,7 @@ const NewGame = () => {
               <div className="uploadedImage"></div>
               <ul className="imageButtons">
                 <li>
-                  <button className="addImage" type="file">Add image</button>
+                  <button className="addImage">Add image</button>
                 </li>
                 <li>
                   <button className="save">Save</button>

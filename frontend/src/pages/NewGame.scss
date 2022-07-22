@@ -92,8 +92,7 @@
   flex-direction: column;
 }
 
-.addImage,
-.save {
+button {
   padding: 6px 25px;
   border: solid 2px #7000ff;
   border-radius: 50px;
@@ -104,10 +103,15 @@
   transition: 0.5s;
 }
 
-.addImage,
-.save:hover {
+button:hover {
   transform: scale(1.15);
   background-color: #7000ff;
   color: white;
   cursor: pointer;
+}
+
+
+.buttonRegister {
+  width: 100%;
+  height: 10%;
 }
