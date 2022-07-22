@@ -88,6 +88,7 @@ INSERT INTO plateform (nom)
  ('Playstation 3'),
  ('Playstation 2'),
  ('Playstation'),
+ ('Psp'),
  ('Xbox'),
  ('Xbox 360'),
  ('Xbox one/s/x'),
