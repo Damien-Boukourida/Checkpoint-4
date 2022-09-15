@@ -52,12 +52,12 @@ class ImageController {
   };
 
   static add = (req, res) => {
-    const { filename, description } = req.body;
+    const { name, description } = req.body;
 
     // TODO validations (length, format...)
 
     models.image
-      .insert({ filename, description })
+      .insert({ name, description })
       .then(([result]) => {
         models.image.find(result.insertId).then(([[imageCreated]]) => {
           res.status(201).send(imageCreated);

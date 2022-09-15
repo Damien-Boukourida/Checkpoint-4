@@ -6,8 +6,8 @@ const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(__dirname, "../../public/assets/images"));
   },
-  name: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.name}`);
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
 
@@ -21,7 +21,7 @@ class UploadController {
       }
       req.body = {
         name: req.file.name,
-        // description: JSON.parse(req.body.imageData).description,
+        description: JSON.parse(req.body.imageData).description,
       };
       console.debug(req.body);
       return next();

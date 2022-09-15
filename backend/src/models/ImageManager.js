@@ -12,7 +12,7 @@ class ImageManager extends AbstractManager {
 
   update(image) {
     return this.connection.query(
-      `update ${ImageManager.table} set filename = ?, creationDate = NOW() where id = ?`,
+      `update ${ImageManager.table} set name = ?, creationDate = NOW() where id = ?`,
       [image.name, image.id]
     );
   }
