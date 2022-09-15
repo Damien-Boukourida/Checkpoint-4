@@ -26,6 +26,13 @@
   align-items: center;
 }
 
+.identity {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .registerform {
   height: 100%;
   width: 55%;
@@ -118,8 +125,24 @@
   height: 60%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-evenly;
+}
+
+#firstname, #lastname {
+  width: 16rem;
+}
+
+#username {
+  width: 13rem;
+}
+
+#email {
+  width: 20rem;
+}
+
+#password, #confirmPassword {
+  width: 10rem;
 }
 
 input {
@@ -128,7 +151,6 @@ input {
   background-color: white;
   padding: 6px 20px;
   height: 1.5rem;
-  width: 20rem;
 }
 
 button {

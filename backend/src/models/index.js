@@ -27,7 +27,7 @@ const models = fs
     // eslint-disable-next-line global-require, import/no-dynamic-require
     const Manager = require(path.join(__dirname, file));
 
-    // eslint-disable-next-line no-param-reassign
+    // eslint-disable-next-line no-param-reassign£
     acc[Manager.table] = new Manager(pool, Manager.table);
 
     return acc;

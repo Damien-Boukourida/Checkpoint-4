@@ -23,6 +23,15 @@
   margin-top: 3rem;
 }
 
+.games {
+  width: 80%;
+  height: auto;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 li input {
   border: solid 2px #7000ff;
   padding: 8.5px 25px;

@@ -154,32 +154,34 @@ const Login = () => {
               </div>
             </div>
             <form className="Inputs" onSubmit={handleSubmitRegister}>
-              <input
-                id="lastname"
-                type="lastname"
-                placeholder="Lastname :"
-                value={state.lastname}
-                onChange={(e) =>
-                  dispatchRegister({
-                    type: "UPDATE_LASTNAME",
-                    payload: e.target.value,
-                  })
-                }
-                required
-              />
-              <input
-                id="firstname"
-                type="firstname"
-                placeholder="Firstname :"
-                value={state.firstname}
-                onChange={(e) =>
-                  dispatchRegister({
-                    type: "UPDATE_FIRSTNAME",
-                    payload: e.target.value,
-                  })
-                }
-                required
-              />
+              <div className="identity">
+                <input
+                  id="lastname"
+                  type="lastname"
+                  placeholder="Lastname :"
+                  value={state.lastname}
+                  onChange={(e) =>
+                    dispatchRegister({
+                      type: "UPDATE_LASTNAME",
+                      payload: e.target.value,
+                    })
+                  }
+                  required
+                />
+                <input
+                  id="firstname"
+                  type="firstname"
+                  placeholder="Firstname :"
+                  value={state.firstname}
+                  onChange={(e) =>
+                    dispatchRegister({
+                      type: "UPDATE_FIRSTNAME",
+                      payload: e.target.value,
+                    })
+                  }
+                  required
+                />
+              </div>
               <input
                 id="username"
                 type="username"

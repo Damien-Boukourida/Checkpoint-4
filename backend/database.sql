@@ -50,10 +50,10 @@ CREATE TABLE `plateform` (
 -- Structure de la table `photo`
 --
 
-CREATE TABLE `photo` (
+CREATE TABLE `image` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
-  `description` VARCHAR(100) NOT NULL,
+  `creationDate` DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
@@ -64,16 +64,8 @@ CREATE TABLE `photo` (
 CREATE TABLE `games` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
-  `plateformId` INT UNSIGNED NOT NULL,
-  `photoId` INT UNSIGNED NOT NULL,
-  `userId` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`, `plateformId`, `photoId`, `userId`),
-  KEY `fk_games_plateform1_idx` (`plateformId`),
-  KEY `fk_games_photo1_idx` (`photoId`),
-  KEY `fk_games_user1_idx` (`userId`),
-  CONSTRAINT `fk_games_plateform1_idx` FOREIGN KEY (`plateformId`) REFERENCES `plateform` (`id`),
-  CONSTRAINT `fk_games_photo1_idx` FOREIGN KEY (`photoId`) REFERENCES `photo` (`id`),
-  CONSTRAINT `fk_games_user1_idx` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+  `plateform` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
@@ -87,7 +79,7 @@ INSERT INTO plateform (nom)
  ('Playstation 4'),
  ('Playstation 3'),
  ('Playstation 2'),
- ('Playstation'),
+ ('Playstation 1'),
  ('Psp'),
  ('Xbox'),
  ('Xbox 360'),
@@ -96,8 +88,7 @@ INSERT INTO plateform (nom)
  ('Nintendo Wii'),
  ('Nintendo Wii U'),
  ('Nintendo Switch'),
- ('Nintendi Gamecube'),
- ('Mobile');
+ ('Nintendo Gamecube');
   
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

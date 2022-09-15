@@ -1,5 +1,6 @@
 import "./MyGames.scss";
 import Header from "@components/Header";
+import Cards from "@components/Cards";
 import { Link } from "react-router-dom";
 
 const MyGames = () => {
@@ -17,10 +18,21 @@ const MyGames = () => {
               </Link>
             </li>
             <li>
-              <input className="searchbar" type="text" placeholder="Search.."></input>
+              <input
+                className="searchbar"
+                type="text"
+                placeholder="Search.."
+              ></input>
             </li>
           </ul>
         </div>
+      </div>
+      <div className="games">
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
       </div>
     </div>
   );

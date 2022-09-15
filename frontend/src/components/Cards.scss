@@ -1,0 +1,49 @@
+.cardBody {
+  height: 250px;
+  width: 150px;
+  border: solid 1px #7000ff;
+  border-radius: 15px;
+}
+
+.cardImage {
+    height: 70%;
+    width: fill;
+    border-radius: 15px 15px 0px 0px;
+    background-color: gray;
+}
+
+.gameInformation {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.gameName {
+    display: flex;
+    justify-content: center;
+    height: auto;
+}
+
+.gameTitle {
+    font-size: 13px;
+    font-weight: bold;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.gamePlateform {
+    font-size: 11px;
+    background-color: #7000ff;
+    width: 80%;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 50px;
+}

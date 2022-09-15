@@ -1,0 +1,32 @@
+/* eslint-disable func-names */
+const multer = require("multer");
+const path = require("path");
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "../../public/assets/images"));
+  },
+  name: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.name}`);
+  },
+});
+
+const upload = multer({ storage }).single("file");
+
+class UploadController {
+  static uploadImage(req, res, next) {
+    upload(req, res, (err) => {
+      if (err) {
+        return res.status(500).send(err.message);
+      }
+      req.body = {
+        name: req.file.name,
+        // description: JSON.parse(req.body.imageData).description,
+      };
+      console.debug(req.body);
+      return next();
+    });
+  }
+}
+
+module.exports = UploadController;
